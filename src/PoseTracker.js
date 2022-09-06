@@ -285,7 +285,9 @@ export default function PoseTracker(
             classifiedPose([undefinedPoseName, 0.00]); //sets classified pose for callback (output)
           }
         }
-      } catch{}
+      } catch{
+        console.log("Camera Pose Error ");
+      }
 
       tf.dispose([image]);
 
