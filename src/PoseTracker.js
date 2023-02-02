@@ -188,6 +188,7 @@ export default function PoseTracker({
         setDetector(detector);
       } catch (e) {
         console.log(e);
+        console.log("error during")
       }
 
       //Load Classification Model and Other Related Assets
@@ -218,6 +219,7 @@ export default function PoseTracker({
 
   const handleCameraStream = async (images, updatePreview, gl) => {
     console.log(images.next().value);
+  
     const loop = async () => {
       // Get the tensor and run pose detection.
       const image = images.next().value;
@@ -234,7 +236,8 @@ export default function PoseTracker({
         );
         console.log(poses);
       } catch (error) {
-        console.log(error);
+        console.log("error with estimating posses. Log: " + error);
+
       }
       const latency = performance.now() - timestamp;
       setEstimationFps(Math.floor(1000 / latency)); //sets value from pos estimation frames per second
